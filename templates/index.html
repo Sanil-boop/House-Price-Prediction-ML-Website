@@ -1,0 +1,41 @@
+<div class="card">
+
+  <!-- Main model image -->
+  <img src="{{ url_for('static', filename='images/main.jpg') }}" class="main-image">
+
+  <h2>🏠 House Price Prediction</h2>
+  <p class="subtitle">Enter property details to estimate price</p>
+
+  <form action="/predict" method="post">
+
+      <label>Square Footage (GrLivArea)</label>
+      <input type="number" step="1" name="sqft" placeholder="Enter square footage" required>
+
+      <div class="field-row">
+
+        <div class="field-box">
+          <img src="{{ url_for('static', filename='images/bedroom.jpeg') }}" class="icon-image">
+          <label>Number of Bedrooms</label>
+          <input type="number" name="bedrooms" placeholder="Enter bedrooms" required>
+        </div>
+
+        <div class="field-box">
+          <img src="{{ url_for('static', filename='images/bathroom.jpeg') }}" class="icon-image">
+          <label>Number of Bathrooms</label>
+          <input type="number" name="bathrooms" placeholder="Enter bathrooms" required>
+        </div>
+
+      </div>
+
+      <button type="submit">🔮 Predict Price</button>
+
+  </form>
+
+  {% if result %}
+  <div class="result">
+    Predicted House Price:
+    <span>₹ {{ result }}</span>
+  </div>
+  {% endif %}
+
+</div>
